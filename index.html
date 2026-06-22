@@ -46,7 +46,7 @@
         "addressRegion": "Greater Accra",
         "addressCountry": "GH"
       },
-      "telephone": "+233000000000",
+      "telephone": "+233249573534",
       "openingHours": "Mo-Su 00:00-24:00",
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
@@ -1116,6 +1116,10 @@ loadRrweb();
               <div><div class="lbl">Location</div><div class="val">Victoria Myers Avenue, Sheanut St, Kwabenya, Accra, Ghana</div></div>
             </div>
             <div class="info-row">
+              <div class="ic">📞</div>
+              <div><div class="lbl">Phone / WhatsApp</div><a class="val" href="https://wa.me/233249573534" target="_blank" rel="noopener">+233 24 957 3534</a></div>
+            </div>
+            <div class="info-row">
               <div class="ic">🕐</div>
               <div><div class="lbl">Hours</div><div class="val">Open 24 hours · Every day</div></div>
             </div>
@@ -1176,7 +1180,7 @@ loadRrweb();
             <div class="social-row">
               <a href="https://www.instagram.com/nafkocleaningservices" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
               <a href="https://www.ghanayello.com/company/49863/NAFKO_CLEANING_SERVICE" target="_blank" rel="noopener" aria-label="GhanaYello">🔗</a>
-              <a href="#contact" aria-label="Contact">✉️</a>
+              <a href="https://wa.me/233249573534" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
             </div>
           </div>
           <div class="footer-col">
@@ -1304,14 +1308,32 @@ loadRrweb();
         }, { threshold: 0.4 });
         statsObserver.observe(statsStrip);
 
-        /* ---- Quote form (demo handler) ---- */
+        /* ---- Quote form (WhatsApp handler) ---- */
         var form = document.getElementById('quoteForm');
         var success = document.getElementById('formSuccess');
         form.addEventListener('submit', function (e) {
           e.preventDefault();
           if (!form.checkValidity()) { form.reportValidity(); return; }
+          
+          var name = document.getElementById('q-name').value;
+          var phone = document.getElementById('q-phone').value;
+          var service = document.getElementById('q-service').value;
+          var msg = document.getElementById('q-msg').value;
+
+          var text = "Hello Nafko Cleaning Services,\n\n" +
+                     "I would like to request a free quote:\n" +
+                     "• *Name:* " + name + "\n" +
+                     "• *Phone/WhatsApp:* " + phone + "\n" +
+                     "• *Service Needed:* " + service + "\n" +
+                     "• *Details:* " + (msg ? msg : "No additional details provided.");
+
+          var whatsappUrl = "https://wa.me/233249573534?text=" + encodeURIComponent(text);
+          
           success.classList.add('show');
           form.reset();
+          
+          window.open(whatsappUrl, '_blank');
+          
           setTimeout(function () { success.classList.remove('show'); }, 6000);
         });
 
